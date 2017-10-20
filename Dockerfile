@@ -6,7 +6,8 @@ RUN apt-get install -y default-jdk wget
 RUN wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz
 RUN tar -xvf android-sdk_r24.2-linux.tgz -C /opt/
 COPY tools /opt/sdk-tools
-ENV PATH ${PATH}:/opt/sdk-tools
+RUN chmod a+x /opt/sdk-tools/android-accept-licenses.sh
+ENV PATH ${PATH}:/opt/sdk-tools/
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/23.0.2/
 
